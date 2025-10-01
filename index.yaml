@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  gpu-metrics-exporter:
+  - apiVersion: v2
+    appVersion: 0.1.25
+    created: "2025-10-01T23:06:19.007427+05:30"
+    description: A Helm chart for Kubernetes
+    digest: 4a0f72f335d98525b24e70e855ed1614a89913c13bc048c490760890a0dbcc78
+    name: gpu-metrics-exporter
+    type: application
+    urls:
+    - gpu-metrics-exporter-0.1.25.tgz
+    version: 0.1.25
+generated: "2025-10-01T23:06:19.00644+05:30"
