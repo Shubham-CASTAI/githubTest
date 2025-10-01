@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: 0.1.25
+description: A Helm chart for Kubernetes
+name: gpu-metrics-exporter
+type: application
+version: 0.1.25

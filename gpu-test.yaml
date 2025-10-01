@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpu-test-deployment
+  namespace: default
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: gpu-test
+  template:
+    metadata:
+      labels:
+        app: gpu-test
+    spec:
+      nodeSelector:
+        scheduling.cast.ai/node-template: "GPU"
+      tolerations:
+        - key: "scheduling.cast.ai/node-template"
+          operator: "Equal"
+          value: "GPU"
+          effect: "NoSchedule"
+      containers:
+        - name: gpu-burn
+          image: nvidia/cuda:12.2.0-base-ubuntu22.04
+          command: ["bash", "-c"]
+          args:
+            - >
+              echo "Starting GPU workload";
+              nvidia-smi;
+              sleep 3600;
+          resources:
+            limits:
+              nvidia.com/gpu: 1
+            requests:
+              nvidia.com/gpu: 1
+

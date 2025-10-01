@@ -1,0 +1,14 @@
+{{/*
+Validation for provider parameter
+*/}}
+{{- $validProviders := list "gke" "eks" "aks" "omni" }}
+{{- if and .Values.provider (not (has .Values.provider $validProviders)) }}
+{{- fail (printf "Invalid provider '%s'. Must be one of: %s" .Values.provider (join " | " $validProviders)) }}
+{{- end }}
+
+{{/* 
+Require either clusterId or clusterIdSecretRef 
+*/}}
+{{- if and (not .Values.castai.clusterId) (not .Values.castai.clusterIdSecretRef) }}
+{{- fail "one of castai.clusterId or castai.clusterIdSecretRef must be set" }}
+{{- end }}
